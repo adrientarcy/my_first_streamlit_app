@@ -28,11 +28,11 @@ def get_Hours(dt):
 
 @st.cache
 def loadds1 ():
-    ds1 = pd.read_csv("uber-raw-data-apr14.csv")
+    ds1 = pd.read_csv("Datasets/uber-raw-data-apr14.csv")
     ds1["Date/Time"] = pd.to_datetime(ds1["Date/Time"],format ="%m/%d/%Y %H:%M:%S")
 
     ds1.columns = ['Date/Time','lat','lon','Base'] 
-
+    
     ds1["DoM"] = ds1["Date/Time"].map(get_Day_Of_Month)
     ds1["Weekday"] = ds1["Date/Time"].map(get_Weekday)
     ds1["Hours"] = ds1["Date/Time"].map(get_Hours)
@@ -41,7 +41,7 @@ def loadds1 ():
 
 @st.cache
 def loadds2():
-    ds2 =  pd.read_csv("ny-trips-data.csv")
+    ds2 =  pd.read_csv("Datasets/ny-trips-data.csv")
     ds2["tpep_dropoff_datetime"] = pd.to_datetime(ds2["tpep_dropoff_datetime"],format ="%Y/%m/%d %H:%M:%S")
     ds2["tpep_pickup_datetime"] = pd.to_datetime(ds2["tpep_pickup_datetime"],format ="%Y/%m/%d %H:%M:%S")
 
